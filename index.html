@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Good One - Handmade Donuts, Andersonville</title>
+    <meta name="description" content="Handmade donuts, fried to order. A community-focused donut shop coming to Andersonville, Chicago.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0077C8;
+            --blue-dark: #005a99;
+            --blue-light: #e5f3fb;
+            --cream: #FFFEFA;
+            --brown: #5D4037;
+            --gold: #D4A54A;
+            --text: #2C2C2C;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--cream);
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--blue-light) 0%, var(--cream) 100%);
+        }
+
+        .hero-logo {
+            max-width: 500px;
+            width: 90%;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--brown);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero .prompt {
+            background: var(--white);
+            padding: 1.5rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            color: var(--text);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .hero .prompt span {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Donut Feature */
+        .donut-feature {
+            background: var(--blue);
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .donut-feature img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: var(--blue);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Concept Section */
+        .concept {
+            background: var(--white);
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .concept-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .concept-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .concept-card h3 {
+            color: var(--brown);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Flavors Section */
+        .flavors {
+            background: var(--cream);
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .flavors-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .flavors h2, .flavors > p {
+            text-align: center;
+        }
+
+        .flavors-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .mainstays {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+
+        .mainstay-item {
+            text-align: center;
+        }
+
+        .mainstay-item img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .mainstay-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .mainstay-item p {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--brown);
+            max-width: 180px;
+        }
+
+        /* Past Weeklies */
+        .past-weeklies {
+            margin-top: 4rem;
+        }
+
+        .past-weeklies h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        .past-weeklies-note {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--brown);
+            margin-bottom: 2rem;
+        }
+
+        .weeklies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .weekly-item {
+            display: flex;
+            justify-content: center;
+        }
+
+        .weekly-item img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .weekly-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Story Section */
+        .story {
+            background: var(--white);
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .story-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-highlight {
+            background: var(--blue-light);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--blue);
+        }
+
+        .story-highlight p {
+            margin: 0;
+            font-style: italic;
+            color: var(--brown);
+        }
+
+        /* Status Section */
+        .status {
+            background: var(--cream);
+        }
+
+        .status-box {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .status-box h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-box p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--brown);
+            color: var(--white);
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .contact-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            color: var(--gold);
+            text-align: center;
+        }
+
+        .contact > p, .contact-inner > p {
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: var(--white);
+            color: var(--text);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: var(--gold);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .contact-form button:hover {
+            background: #c49640;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .social-link a:hover {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            .hero-logo {
+                max-width: 280px;
+            }
+
+            .hero .prompt {
+                padding: 1rem 1.5rem;
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .concept, .story, .contact, .flavors {
+                padding: 3rem 1.5rem;
+            }
+
+            .mainstay-item img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .weeklies-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .weekly-item img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="bluedonut.png" alt="The Good One">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#concept">Concept</a></li>
+            <li><a href="#flavors">Flavors</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#status">Status</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <img src="logo.png" alt="The Good One" class="hero-logo">
+        <p class="tagline">Handmade donuts, fried to order. Coming to Andersonville, Chicago.</p>
+        <div class="prompt">I'm a good <span>______</span></div>
+        <span class="status-badge">Seeking location & investment</span>
+    </header>
+
+    <div class="donut-feature">
+        <img src="donut.jpg" alt="Brown Butter Donut - handmade and fried to order">
+    </div>
+
+    <section class="concept" id="concept">
+        <div class="concept-inner">
+            <h2>The Concept</h2>
+            <p>The Good One isn't just a donut shop. It's an invitation to say something good about yourself.</p>
+            <p>When you approach the register, you'll see a sign: <strong>"Finish this phrase for a free sample: I'm a good ______."</strong> Say something positive about yourself. Get a fresh taste of a hot donut. Maybe make it a habit, even when you're not at the shop.</p>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3>Handmade</h3>
+                    <p>Every donut is hand-shaped and prepared fresh. No machines stamping out rings. Real brioche dough, real care.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>Fried to Order</h3>
+                    <p>Your donut hits the fryer when you order it. Hot, fresh, the way a donut should be experienced.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>Weekly Flavors</h3>
+                    <p>A few mainstays plus a rotating weekly flavor. Sometimes classic, sometimes wild.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="flavors" id="flavors">
+        <div class="flavors-inner">
+            <h2>The Flavors</h2>
+            <p class="flavors-intro">Three mainstays you can always count on, plus rotating weekly specials.</p>
+
+            <div class="mainstays">
+                <div class="mainstay-item">
+                    <img src="bb.png" alt="Brown Butter">
+                    <p>Nutty, rich, perfectly glazed. The house favorite.</p>
+                </div>
+                <div class="mainstay-item">
+                    <img src="pbj.png" alt="PB&J">
+                    <p>Peanut butter and strawberry. Childhood, elevated.</p>
+                </div>
+                <div class="mainstay-item">
+                    <img src="smores.png" alt="S'mores">
+                    <p>Graham, chocolate, toasted marshmallow.</p>
+                </div>
+            </div>
+
+            <div class="past-weeklies">
+                <h3>Past Weekly Flavors</h3>
+                <p class="past-weeklies-note">A look back at some of the rotating specials. Got a flavor idea? Send it over.</p>
+                <div class="weeklies-grid">
+                    <div class="weekly-item"><img src="weeklies/ube.png" alt="Ube"></div>
+                    <div class="weekly-item"><img src="weeklies/espresso.png" alt="Espresso"></div>
+                    <div class="weekly-item"><img src="weeklies/strawberry-shortcake.png" alt="Strawberry Shortcake"></div>
+                    <div class="weekly-item"><img src="weeklies/matcha-latte.png" alt="Matcha Latte"></div>
+                    <div class="weekly-item"><img src="weeklies/pepper-bacon.jpg" alt="Pepper Bacon"></div>
+                    <div class="weekly-item"><img src="weeklies/maple-butter-popcorn.png" alt="Maple Butter Popcorn"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-inner">
+            <h2>The Story</h2>
+            <p>It started at a scary movie night. Bride of Chucky was playing, but the real conversation was about donuts.</p>
+            <p>A friend couldn't stop talking about the handmade donuts he'd had once. Before long, the whole room was sharing donut memories. Then someone asked: what would you call such a shop? Another friend just blurted it out: "The Good One."</p>
+            <p>The next morning, the name stuck. Within two weeks, there was a business plan.</p>
+
+            <div class="story-highlight">
+                <p>"I set out to create a business that does good, feels good, and reminds people that they are good."</p>
+            </div>
+
+            <p>The founder spent nearly two decades building tech startups in San Francisco - working on everything from Elasticsearch to self-driving cars. Impressive technology, but the rewards mostly went to venture capitalists.</p>
+            <p>Moving back to Chicago, to Andersonville, the goal changed: apply those skills to enriching the community instead of enriching VCs. A queer-owned business in a queer neighborhood, built to bring joy.</p>
+            <p>Why donuts? Because there's only one ingredient that makes a donut a donut: <strong>joy</strong>. Someone made it, called it a donut, and gave it to someone else with the intent to bring them happiness.</p>
+        </div>
+    </section>
+
+    <section class="status" id="status">
+        <h2>Where We Are Now</h2>
+        <p>The Good One had a successful run of pop-ups at Loaves and Witches and Uve in Andersonville. 125 donuts sold out in 45 minutes on opening day. The community showed up.</p>
+        <p>But a pop-up isn't a permanent home. The dream is a real shop on Clark Street - a place where you can walk in, say something good about yourself, and get a hot donut straight from the fryer.</p>
+
+        <div class="status-box">
+            <h3>Currently Seeking</h3>
+            <p>The right location in Andersonville and the investment to make it happen. If you have leads on commercial space or are interested in helping bring a community-focused donut shop to life, get in touch below.</p>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <h2>Get In Touch</h2>
+            <p>Have a lead on a location? Interested in investing? Just want to share a flavor idea?</p>
+
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="text" name="name" placeholder="Your name" required>
+                <input type="email" name="email" placeholder="Your email" required>
+                <input type="text" name="subject" placeholder="What's this about?">
+                <textarea name="message" placeholder="Your message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div class="social-link">
+                <a href="https://instagram.com/eatthegoodone" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    @eatthegoodone
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>The Good One &bull; Andersonville, Chicago<br>A queer-owned, community-focused donut shop (coming soon)</p>
+    </footer>
+</body>
+</html>
