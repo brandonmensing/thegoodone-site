@@ -444,8 +444,20 @@
 
         /* Mobile */
         @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 0.75rem 1rem;
+            }
+
             .nav-links {
-                display: none;
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+                font-size: 0.85rem;
+                padding-top: 0.5rem;
+                border-top: 1px solid #eee;
             }
 
             .hero {
